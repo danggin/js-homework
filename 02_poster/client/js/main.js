@@ -1,4 +1,9 @@
 const navigation = document.querySelector('.nav');
+const container = document.querySelector('.container');
+const audio = document.querySelector('.audio');
+const visualImage = document.querySelector('.visual img');
+const title = document.querySelector('.nickName');
+const body = document.querySelector('body');
 
 /* 6. 함수 분리 */
 
@@ -25,7 +30,6 @@ function handleBackgroundColor(e) {
   if (!target) return;
   handleClass(e);
 
-  const body = document.querySelector('body');
   body.style.background = `linear-gradient(to bottom, ${
     data[index - 1].color[0]
   }, ${data[index - 1].color[1]})`;
@@ -37,11 +41,10 @@ function handleImage(e) {
   e.preventDefault();
   const target = e.target.closest('li');
   const index = target?.dataset.index;
-  const visualImage = document.querySelector('.visual img');
 
   if (!target) return;
 
-  visualImage.src = `./assets/${data[index - 1].name}.jpeg`;
+  visualImage.src = `./assets/${data[index - 1].name.toLowerCase()}.jpeg`;
   visualImage.alt = data[index - 1].alt;
 }
 
@@ -52,7 +55,6 @@ function handleText(e) {
 
   const target = e.target.closest('li');
   const index = target?.dataset.index;
-  const title = document.querySelector('.nickName');
 
   if (!target) return;
 
@@ -64,8 +66,6 @@ function handleText(e) {
 function handleAudio(e) {
   const target = e.target.closest('li');
   const index = target?.dataset.index;
-  const container = document.querySelector('.container');
-  const audio = document.querySelector('.audio');
 
   if (!target) return;
 
